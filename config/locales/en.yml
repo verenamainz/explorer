@@ -198,6 +198,11 @@ en:
         title: "%{address} outflow in %{network}"
         description: "Outflow of different crypto tokens and coins from address %{address} activity in %{network}, statistics of outbound transfers, destinations of money transfers"
         keywords: "%{address} outflow, crypto outflow, %{network} sent, sent %{network}, %{network} money outflow,%{network} wallet sent, %{network} outflow, %{network} outflows"
+      security:
+        name: 'Security'
+        title: "%{address} Security in %{network}"
+        description: "Monitor the address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring"
       calls_contracts:
         name: 'Calls Contracts'
         title: "%{network} smart contracts calls by %{address}"
@@ -261,6 +266,11 @@ en:
         title: "%{address} Smart Contract Outflow | %{network}"
         description: "Outflow of different crypto tokens and coins from smart contract %{address} activity in %{network}, statistics of outbound transfers, destinations of money transfers"
         keywords: "%{address} outflow, %{address} outflows,%{network}"
+      security:
+        name: 'Security'
+        title: "%{address} Security in %{network}"
+        description: "Monitor the address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring"
       calls_contracts:
         name: 'Calls Contracts'
         title: "%{address} Smart Contracts Calls | %{network}"
@@ -1028,6 +1038,7 @@ en:
       smart_contract_bytecode: "Smart Contract Bytecode"
       smart_contract_calls_by_time: "Calls Count By Date"
       smart_contract_callers_by_time: "Unique Callers By Date"
+      smart_contract_calls_transaction: "Latest Smart Contract Calls"
       smart_contract_transactions: "Latest Transactions"
       smart_contract_top_callers: "Top Callers"
       smart_contract_top_gas_burners: "Top Gas Burners"

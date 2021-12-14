@@ -221,6 +221,7 @@ zh:
       smart_contract_attributes: "智能合约只读属性"
       smart_contract_calls_by_time: "通话按日期计数"
       smart_contract_callers_by_time: "按日期显示的唯一来电者"
+      smart_contract_calls_transaction: "最新的智能合约调用"
       smart_contract_transactions: "最新交易"
       smart_contract_top_callers: "热门来电者"
       smart_contract_top_gas_burners: "顶级燃气燃烧器"

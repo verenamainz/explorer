@@ -8,6 +8,10 @@ class Ethereum::SmartContractController < Ethereum::AddressController
     render 'ethereum/address/outflow'
   end
 
+  def security
+    render 'ethereum/address/security'
+  end
+
   def calls_contracts
     render 'ethereum/address/calls_contracts'
   end

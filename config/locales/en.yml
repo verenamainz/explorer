@@ -203,6 +203,16 @@ en:
         title: "%{address} Security in %{network}"
         description: "Monitor the address %{address} in %{network},"
         keywords: "%{address} security, %{address} monitoring"
+      in_out:
+        name: 'In/Outflow'
+        title: "%{address} In/Outflow in %{network}"
+        description: "Monitor the in and outflow of address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring"
+      gas:
+        name: 'Gas'
+        title: "%{address} Gas monitoring in %{network}"
+        description: "Monitor the gas consumption of an address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring, %{address} gas"
       calls_contracts:
         name: 'Calls Contracts'
         title: "%{network} smart contracts calls by %{address}"
@@ -271,6 +281,16 @@ en:
         title: "%{address} Security in %{network}"
         description: "Monitor the address %{address} in %{network},"
         keywords: "%{address} security, %{address} monitoring"
+      in_out:
+        name: 'In/Outflow'
+        title: "%{address} In/Outflow in %{network}"
+        description: "Monitor the in and outflow of address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring"
+      gas:
+        name: 'Gas'
+        title: "%{address} Gas monitoring in %{network}"
+        description: "Monitor the gas consumption of an address %{address} in %{network},"
+        keywords: "%{address} security, %{address} monitoring, %{address} gas"
       calls_contracts:
         name: 'Calls Contracts'
         title: "%{address} Smart Contracts Calls | %{network}"
@@ -998,6 +1018,7 @@ en:
       attestations_by_time: 'Slot Attestations by date'
       deposits_by_time: 'Deposits By Time'
       in_out_transfers_by_time: 'In/Outbound transfer count by date'
+      in_out_transfers_by_amount: 'In/Outbound transfer amount by date'
       mints_by_time: 'Mints by date'
       minters_by_time: 'Minters by date'
       calls_by_time: 'Smart contract calls ( including internal ) by date'

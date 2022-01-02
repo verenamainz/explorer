@@ -1,8 +1,8 @@
 <div class="col-12 col-lg-6 mb-4">
   <div class="card">
-    <div class="card-header"><%= t('widgets.headers.in_out_transfers_by_time') %></div>
+    <div class="card-header"><%= t('widgets.headers.in_out_transfers_by_amount') %></div>
     <div class="card-body">
-      <div id="in_out_transfers_by_time"><%= t('loading') %></div>
+      <div id="in_out_transfers_by_amount"><%= t('loading') %></div>
     </div>
   </div>
 </div>
@@ -12,35 +12,31 @@
     $( document ).ready(function() {
 
         var query = new widgets.query(`
-                        query ($network: EthereumNetwork!,
-                        $dateFormat: String!,
-                        $address: String!,
-                        $from: ISO8601DateTime,
-                        $till: ISO8601DateTime){
-                    ethereum(network: $network ){
-                      transfers(date: {
-                        since: $from
-                        till: $till}
-                        amount: {gt: 0}
-                        options: {asc: "date.date"}
-                        ) {
-                        date{
-                          date(format: $dateFormat)
-                        }
-                        in_count: count(receiver: {is: $address})
-                        out_count: count(sender: {is: $address})
-                      }
-                    }
-                  }`);
+            query ($network: EthereumNetwork!, $dateFormat: String!, $address: String!, $from: ISO8601DateTime, $till: ISO8601DateTime, $nativeCurrency: String!) {
+              ethereum(network: $network) {
+                transfers(
+                  options: {asc: "date.date"}
+                  date: {since: $from, till: $till}
+                  amount: {gt: 0}
+                  currency: {is: $nativeCurrency}
+                ) {
+                  date: date {
+                    date(format: $dateFormat)
+                  }
+                  out_amount: amount(sender: {is: $address})
+                  in_amount: amount(receiver: {is: $address})
+                }
+              }
+            }`);
 
 
-        new widgets.chartByTime('#in_out_transfers_by_time', query, 'ethereum.transfers', {
+        new widgets.chartByTime('#in_out_transfers_by_amount', query, 'ethereum.transfers', {
             title: '<%= t('widgets.headers.in_out_transfers_by_time') %>',
             chartOptions: {
                 isStacked: true,
                 vAxes: {
                     '0': {
-                        title: '<%= t('widgets.titles.transfer_count') %>',
+                        title: '<%= t('widgets.titles.transfer_amount') %>',
                         format: 'decimal',
                         viewWindow: {
                             min: 'auto'
@@ -51,15 +47,15 @@
                 series: {
                     '0': { color: '#28a745' },
                     '1': { color: '#ffc107' },
-                }
+                    }
             },
             renderData: function(data){
                 let new_data = [];
                 widgets.lodash.each(data, function(item){
                     new_data.push({
                         date: item.date,
-                        in_count: item.in_count,
-                        out_count: item.out_count==0 ? 0 : -item.out_count
+                        in_amount: item.in_amount,
+                        out_amount: item.out_amount==0 ? 0 : -item.out_amount,
                     });
                 });
                 return new_data;
@@ -70,19 +66,20 @@
                     path: 'date.date'
                 },
                 {
-                    title: '<%= t('widgets.titles.receive_count') %>',
-                    path: 'in_count'
+                    title: '<%= t('widgets.titles.volume_in', currency: @network[:currency]) %>',
+                    path: 'in_amount'
                 },
                 {
-                    title: '<%= t('widgets.titles.send_count') %>',
-                    path: 'out_count'
+                    title: '<%= t('widgets.titles.volume_out', currency: @network[:currency]) %>',
+                    path: 'out_amount'
                 },
             ]
         });
 
         queryWithTimeRange(rr, query, <%= @from.html_safe %>,<%= @till.html_safe %>,{
             network: '<%= params['network']['network'] %>',
-            address: '<%= @address %>'
+            address: '<%= @address %>',
+            nativeCurrency: '<%= @network[:currency] %>'
         });
 
 

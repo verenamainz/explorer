@@ -330,6 +330,7 @@ zh:
       smart_contract_type: "合同类型"
       smart_contract_protocol_type: "协议"
       success: "成功？"
+      difficulty: ""
   pages:
     footer:
       built: "建立"

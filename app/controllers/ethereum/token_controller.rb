@@ -30,6 +30,14 @@ class Ethereum::TokenController < Ethereum::AddressController
     render 'ethereum/address/security'
   end
 
+  def gas
+    render 'ethereum/address/gas'
+  end
+
+  def in_out
+    render 'ethereum/address/in_out'
+  end
+
   def calls_contracts
     render 'ethereum/address/calls_contracts'
   end

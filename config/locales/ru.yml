@@ -334,6 +334,7 @@ ru:
       payer: "Отправитель"
       node: "Получатель"
       transaction_type: "Тип транзакции"
+      difficulty: ""
   pages:
     footer:
       built: "Сделано на основе"
